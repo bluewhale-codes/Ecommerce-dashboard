@@ -1,0 +1,551 @@
+import React ,{useState ,useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'; 
+import { useDispatch,useSelector } from 'react-redux'
+import { newProduct , clearErrors } from '../../../actions/productActions';
+import Loader from './main/Loader';
+import Sidebar from './main/Sidebar';
+import { NEW_PRODUCT_RESET } from '../../../constants/productConstants';
+import { getAllBrand } from '../../../actions/productActions';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { Link } from 'react-router-dom';
+import AddIcon from '@mui/icons-material/Add';
+import { saveVariantInfo ,addOptions,removeOptions } from '../../../actions/productActions';
+import ClearIcon from '@mui/icons-material/Clear';
+import { Dialog , Rating ,Button, DialogActions ,DialogContent, DialogTitle} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import '.././mainCss/newProduct.css'
+import '.././mainCss/newProductForm.css'
+
+
+let nextId = 0;
+let vId =0;
+const NewProducts = () => {
+    const {loading , error , success} = useSelector((state)=>state.newProduct)
+    const {Brands} = useSelector((state)=>state.brands)
+    const {options} = useSelector((state)=>state.variant)
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [open, setOpen] = useState(false)
+    const [vopen, setVopen] = useState(false)
+    const [title, setTitle] = useState("")
+    const [price, setPrice] = useState("")
+    const [type,setType] = useState("")
+    const [tag,setTag] = useState([])
+    const [description,setDescription] = useState("")
+    const [camparePrice,setComparePrice] = useState("")
+    const [costPerItem,setCostPerItem] = useState("")
+    const [profit,setProfit] = useState("")
+    const [margin, setMargin] = useState("")
+    const [weight, setWeight] = useState("")
+    const [stock, setStock] = useState()
+    const [category, setCategory] = useState("")
+    const [status , setStatus] = useState("Draft")
+
+
+    const [option , setOption] = useState("")
+    const [optionName , setOptionName] = useState("")
+    const [optionValue , setOptionValue] = useState([])
+
+    
+    
+    
+    const submitReviewToggleb = ()=> {
+        open ? setOpen(false) : setOpen(true)
+    }
+    const createVariantToggle = ()=> {
+        vopen ? setVopen(false) : setVopen(true)
+    }
+
+   
+
+    const categories =[
+        "Clothes",
+        "Shoose",
+        "Accessories",
+        "Electronics",
+    ]
+ 
+     useEffect(() => {
+       
+        if(success){
+            navigate('/admin/dashboard')
+            dispatch({type:NEW_PRODUCT_RESET})
+        }
+        dispatch(getAllBrand());
+     }, [dispatch,navigate,success])
+     
+    const addTocartHandler= async(e) => {
+        e.preventDefault();
+        dispatch(saveVariantInfo({price,
+            camparePrice,
+            costPerItem,
+            profit,
+            margin,
+            weight,
+            option,
+            optionValue,
+            
+            }));
+        alert('variant adder added successfully')
+    }
+    const addOptionHandler= async(e) => {
+        e.preventDefault();
+        dispatch(addOptions({id: vId++,option,optionValue}));
+        submitReviewToggleb();
+    }
+    const removeOptionHandler= async(id) => {
+        dispatch(removeOptions(id));
+    }
+
+    const addValueHandler = () =>{
+        setOptionValue([
+            ...optionValue,
+            {id: nextId++,value:optionName}
+          ]);
+          setOptionName('')
+    }
+    
+
+     const createFormSubmitHandler = (e)=>{
+        //    e.preventDefault();
+        //    const myForm = new FormData();
+        //    myForm.set("name",name);
+        //    myForm.set("Price",price);
+        //    myForm.set("dPrice",discountPrice)
+        //    myForm.set("description",description);
+        //    myForm.set("catagory",category);
+        //    myForm.set("Brand",brand);
+        //    myForm.set("Stock",stock);
+        //    images.forEach((image)=>{
+        //     myForm.append("images",image)
+        //    })
+        //    dispatch(newProduct(myForm))
+           
+     };
+    //  const createProductImageChanage = (e) =>{
+    //     const files = Array.from(e.target.files);
+
+    //     setImages([]);
+    //     setImagesPreview([])
+    //     files.forEach((file)=>{
+    //         const reader = new FileReader();
+    //         reader.onload = () => {
+    //             if(reader.readyState === 2){
+    //                 setImagesPreview((old)=>[...old,reader.result]);
+    //                 setImages((old)=>[...old,reader.result])
+    //             }
+    //         }
+    //         reader.readAsDataURL(file);
+    //     })
+    //  }
+
+
+
+
+  return (
+    <>
+     {loading ? <Loader/> :(
+       <div className='dashboard'>
+        <Sidebar/>
+        <div className='newProductContainer new-product-form'>
+            <div className='product-creation-form'>
+                <div className='header'>
+                <p className='form-header-text'>Add product</p>
+                </div>
+                <form onSubmit={addTocartHandler}>
+                    <div className='form-flex-container'>
+                        <div className='flex-container-1'>
+                                <div className='creation-from-card'>
+                                    
+                                    <div className='form-card-row'>
+                                        <p className='from-input-label'>Title</p>
+                                        <div>
+                                            <div className='form-input-wrapper'>
+                                                <input type='text' placeholder='color,size,material' required onChange={(e)=> setTitle(e.target.value)}/>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div className='form-card-row'>
+                                        <p className='from-input-label'>Description</p>
+                                        <div>
+                                            <div className='form-input-wrapper'>
+                                               
+                                                <textarea  required onChange={(e)=> setDescription(e.target.value)}>
+
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                {/* <div className='creation-from-card upload-image-card'>
+                                    
+                                     <div className='form-card-row'>
+                                        <p className='from-input-label'>Media</p>
+                                        <div>
+                                            <div className='form-input-wrapper'>
+                                                <label for='Pimage'><span className='form-title-value'>Upload new</span></label>
+                                                <input id='Pimage' type='file'/>
+                                            </div>
+                                        </div>
+                                        
+                                    </div> 
+                                    
+                                </div> */}
+                                {/* <div className='creation-from-card from-pricing-card'>
+                                   <p className='from-input-label'>Pricing</p>
+                                    
+                                    <div className='form-card-row'>
+                                       
+                                        
+                                           <div className='form-input-wrapper'>
+                                               <p className='from-input-label'>Pricing</p>
+                                                <input type='number' required onChange={(e)=> setPrice(e.target.value)}/>
+                                            </div>
+                                           <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Comapare-at-price</p>
+                                                <input type='number' required onChange={(e)=> setComparePrice(e.target.value)}/>
+                                            </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div className='form-card-row'>
+                                   
+                                            <div className='form-input-wrapper'>
+                                               <p className='from-input-label'>cost per item</p>
+                                                <input type='number' required onChange={(e)=> setCostPerItem(e.target.value)}/>
+                                            </div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Profit</p>
+                                                <input type='number' required onChange={(e)=> setProfit(e.target.value)}/>
+                                            </div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Margin</p>
+                                                <input type='number' required onChange={(e)=> setMargin(e.target.value)}/>
+                                            </div>
+
+                                        
+                                    </div>
+                                    
+                                </div> */}
+                                {/* <div className='creation-from-card'>
+                                    <p className='from-input-label'>Shipping</p>
+                                    
+                                    <div className='form-card-row'>
+                                        <p className='from-input-label'>
+                                            <input type='checkbox'/><span className='form-help-text'>This is physical product</span>
+                                        </p>
+                                        <div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Weight</p>
+                                                <input type='number' required onChange={(e)=> setWeight(e.target.value)}/>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div> */}
+                                <div className='creation-from-card variant-card'>
+                                    <p className='from-input-label'>Variant</p>
+                                    <div className='form-card-row row-link'>
+                                        <Link onClick={submitReviewToggleb}><AddIcon fontSize='small'/> Add option</Link>
+                                            <Dialog aria-labelledby='simple-dialog-title' open={open} onClose={submitReviewToggleb}>
+                                                <DialogTitle>Add option</DialogTitle>
+                                                <DialogContent className='submitDialog'>
+                                                    <div className='input-wrapper-admin-personel-info'>
+                                                        <p className='input-label'>Option name</p> 
+                                                        <input type='text' required onChange={(e)=>setOption(e.target.value)}/>
+                                                    </div>
+                                                    <div className='input-wrapper-admin-personel-info'>
+                                                       
+                                                            <p className='input-label'>Option value</p>
+                                                            <input type='text' value={optionName} required onChange={(e)=> setOptionName(e.target.value)}/>
+                                                            <div className='option-tag-wrapper'>
+                                                            {optionValue.map(artist => (
+                                                                <div>
+                                                                    <span className='option-value-tag'>{artist.value}</span>
+                                                                    <span onClick={()=>{
+                                                                        setOptionValue(
+                                                                            optionValue.filter(a =>
+                                                                              a.id !== artist.id
+                                                                            ))
+                                                                    }} className='clear-icon'><ClearIcon fontSize='small'/></span>
+                                                                </div>
+                                                                
+                                                            
+                                                            ))}
+                                                            
+                                                            </div>
+
+                                                            <button onClick={addValueHandler}>Add</button>
+                                                        
+                                                    </div>
+                                                    
+
+                                                    <DialogActions>
+                                                        <div className='personel-detail-edit-action'>
+                                                        <button onClick={submitReviewToggleb}>Cancel</button>
+                                                        <button onClick={addOptionHandler}>Add</button>
+                                                        </div>
+                                                    </DialogActions>
+                                                </DialogContent>
+                                        </Dialog>
+                                    </div>
+                                    <div className='form-card-row '>
+                                        {options && options.map((i)=> 
+    
+                                          <div className='options-row'>
+                                                <div>
+                                                <p className='form-title-text'>{i.option}</p>
+                                                <p className='form-title-value'>
+                                                    {i.optionValue && i.optionValue.map((o)=><>
+                                                    <span className='option-value'>{o.value}</span>
+                                                    </>)}
+                                                </p>
+                                                </div>
+                                                <div>
+                                                        <DeleteIcon onClick={()=>removeOptionHandler(i.id)} fontSize='small'/>
+                                                </div>
+                                          </div>
+                                          
+                                        )}
+                                             
+                                       
+                                    </div>
+                                    <div className='form-card-row row-link'>
+                                        <Link onClick={createVariantToggle}><AddIcon fontSize='small'/>Add Variant</Link>
+                                        <Dialog aria-labelledby='simple-dialog-title' open={vopen} onClose={createVariantToggle}>
+                                                <DialogTitle>Add option</DialogTitle>
+                                                <DialogContent className='submitDialog'>
+                                                        <div className='creation-from-card'>
+                                                            <div className='form-card-row'>  
+                                                                    {options && options.map((i)=> 
+
+                                                                          <div className='form-input-wrapper'>
+                                                                              <p className='from-input-label'>{i.option}</p>
+                                                                              <select onChange={(e)=> alert(e.target.value)}>
+                                                                                  {i.optionValue && i.optionValue.map((o)=>
+                                                                                     <option value={o.value}>{o.value}</option>
+                                                                                  )}
+                                                                              </select>
+                                                                          </div>
+                                                                          
+                                                                    )}
+                                                                   
+                                              
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div className='creation-from-card from-pricing-card'>
+                                                        <p className='from-input-label'>Pricing</p>
+                                                            
+                                                            <div className='form-card-row'>
+                                                            
+                                                                
+                                                                <div className='form-input-wrapper'>
+                                                                    <p className='from-input-label'>Pricing</p>
+                                                                        <input type='number' required onChange={(e)=> setPrice(e.target.value)}/>
+                                                                    </div>
+                                                                <div className='form-input-wrapper'>
+                                                                        <p className='from-input-label'>Comapare-at-price</p>
+                                                                        <input type='number' required onChange={(e)=> setComparePrice(e.target.value)}/>
+                                                                    </div>
+                                                                
+                                                                
+                                                                
+                                                            </div>
+                                                            <div className='form-card-row'>
+                                                        
+                                                                    <div className='form-input-wrapper'>
+                                                                    <p className='from-input-label'>cost per item</p>
+                                                                        <input type='number' required onChange={(e)=> setCostPerItem(e.target.value)}/>
+                                                                    </div>
+                                                                    <div className='form-input-wrapper'>
+                                                                        <p className='from-input-label'>Profit</p>
+                                                                        <input type='number' required onChange={(e)=> setProfit(e.target.value)}/>
+                                                                    </div>
+                                                                    <div className='form-input-wrapper'>
+                                                                        <p className='from-input-label'>Margin</p>
+                                                                        <input type='number' required onChange={(e)=> setMargin(e.target.value)}/>
+                                                                    </div>
+
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div className='creation-from-card'>
+                                                            <p className='from-input-label'>Shipping</p>
+                                                            
+                                                            <div className='form-card-row'>
+                                                                <p className='from-input-label'>
+                                                                    <input type='checkbox'/><span className='form-help-text'>This is physical product</span>
+                                                                </p>
+                                                                <div>
+                                                                    <div className='form-input-wrapper'>
+                                                                        <p className='from-input-label'>Weight</p>
+                                                                        <input type='number' required onChange={(e)=> setWeight(e.target.value)}/>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div className='creation-from-card stock-card'>
+                                            
+                                                            <div className='form-card-row'>
+                                                                <p className='from-input-label'>Stock Available</p>
+                                                                <div>
+                                                                    <div className='form-input-wrapper'>
+                                                                        <input type='number' placeholder='color,size,material' required onChange={(e)=> setTitle(e.target.value)}/>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div className='form-card-row'>
+                                                                <p className='from-input-label'>On hand</p>
+                                                                <div>
+                                                                    <div className='form-input-wrapper'>
+                                                                        <input type='number' required/>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    
+
+                                                    <DialogActions>
+                                                        <div className='personel-detail-edit-action'>
+                                                        <button onClick={submitReviewToggleb}>Cancel</button>
+                                                        <button onClick={addOptionHandler}>Add</button>
+                                                        </div>
+                                                    </DialogActions>
+                                                </DialogContent>
+                                        </Dialog>
+                                    </div>
+                                    <div className='form-table-card-row'>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th className='variant-tag'>Variant</th>
+                                                    <th>Price</th>
+                                                    <th>Available</th>
+                                                    <th>On hand</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Red</td>
+                                                    <td>
+                                                        <div className='form-input-wrapper'>  
+                                                            <input type='number'/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div className='form-input-wrapper'>  
+                                                            <input type='number'/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div className='form-input-wrapper'>  
+                                                            <input type='number'/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <button>Edit</button>
+                                                    </td>
+                                            
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                        </div>
+                        <div className='flex-container-2'>
+                                <div className='creation-from-card'>   
+                                    <div className='form-card-row'>
+                                        <p className='from-input-label'>Status</p>
+                                           <div className='form-input-wrapper'>
+                                                <input type='text' required onChange={(e)=> setStatus(e.target.value)}/>
+                                            </div>
+                                        
+                                        
+                                    </div>    
+                                </div>
+                                <div className='creation-from-card'>   
+                                    <div className='form-card-row'>
+                                        <p className='form-title-value'>Product organization</p>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Proudct catagory</p>
+                                                <input type='text' required onChange={(e)=> setCategory(e.target.value)}/>
+                                            </div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>Proudct type</p>
+                                                <input type='text' required onChange={(e)=> setType(e.target.value)}/>
+                                            </div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label'>vender</p>
+                                                <input type='text' />
+                                            </div>
+                                            <div className='form-input-wrapper'>
+                                                <p className='from-input-label' required onChange={(e)=> setTag(e.target.value)}>Tag</p>
+                                                <input type='text'/>
+                                            </div>
+         
+                                    </div>    
+                                </div>
+                        </div>
+                        
+                    </div>
+                    <div className='form-actions'>
+                        <button>Discard</button>
+                        <button type='submit'>Save</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+     </div>
+     )}
+    </>
+  )
+}
+
+
+
+export default NewProducts
+
+
+
+import React ,{useState}  from 'react'
+import { useRef } from 'react';
+
+const NewProducts = () => {
+    const textInput = useRef(null);
+    const [value,setValue] = useState("c")
+  
+  function handleClick() {
+    setValue(textInput.current.innerHTML);
+  }
+
+  return (
+
+    <div>
+        <h1>{value}</h1>
+      <p ref={textInput} >Hello world</p>
+      <input
+        type="button"
+        value="Focus the text input"
+        onClick={handleClick}
+      />
+    </div>
+  );
+}
+
+export default NewProducts

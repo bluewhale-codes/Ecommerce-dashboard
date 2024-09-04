@@ -1,11 +1,42 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --main-bg-color: #f6f6f6;
+  --main-blue-color: rgb(5, 142, 247);
+  --vz-danger: #ed5e5e;
+  --vz-btn-color: #fff;
+  --vz-danger-text-emphasis: #c95050;
+  --vz-success-bg-subtle: #dcf6e9;
+  --vz-heading-color: #495057;
+  --vz-secondary-color: #878a99;
+  --vz-success: #13c56b;
+  --vz-success-hover: #0ea55a;
+  --apple-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  --vz-header-bg: #38454a;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:var(--apple-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.MuiDataGrid-columnHeader{
+  background-color:var(--main-blue-color);
+  padding: 1vmax !important;
+}
+.MuiDataGrid-columnHeader > div{
+color: white;
+font-size: 16px;
+font-family:var(--apple-font);
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

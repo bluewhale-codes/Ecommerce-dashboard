@@ -1,0 +1,35 @@
+.search {
+    margin: 20px 0px;
+    width: 100%;
+    display: flex;
+  }
+  #discountTag{
+    background-color: rgb(208, 2, 2) !important;
+  }
+.searchTerm {
+    width: 50%;
+    font-size: 15px;
+    font-weight: 500;
+    border: 2px solid var(--main-blue-color);
+    border-right: none;
+    padding: 20px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #1e1e1e;
+}
+  .searchButton {
+    border: 1px solid var(--main-blue-color);
+    background-color: var(--main-blue-color);
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .gallaryProducts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }

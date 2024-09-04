@@ -1,0 +1,274 @@
+.managementHome-container{
+    padding: 50px !important;
+    background-color: rgb(243, 243, 243);
+}
+.managementHome-container .header h2{
+    padding: 20px;
+    color: var(--vz-heading-color);
+    font-family: var(--apple-font);
+}
+.admin-settingPage-card{
+    width:600px;
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid rgb(246, 243, 243);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.profile-detail-row{
+    display: flex;
+}
+.profile-detail-row > div{
+    width: 50%;
+}
+.store-detail-wrapper{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+.store-profile-card .detail{
+    padding: 10px 0px;
+}
+.store-detail-wrapper .detail ,.Billing-information .detail{
+    padding-inline-start: 10px;
+}
+.store-Billing-card .head{
+    padding-bottom: 20px;
+}
+.store-currency-card .detail{
+    padding-top: 20px;
+}
+
+
+
+/* Code Management */
+
+.heading-text{
+    font-style:16px;
+    font-weight: 500;
+    color: var(--vz-heading-color);
+}
+.title-text{
+    color: var(--vz-heading-color);
+    font-weight: 500;
+    font-size: 14px;
+}
+.title-value-text{
+    color: var(--vz-secondary-color);
+    font-size: 14px;
+}
+.card-input-label{
+    color: var(--vz-heading-color);
+    font-weight: 500;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+.card-help-text{
+    font-size: 14px;
+    padding: 5px 0px;
+    color: var(--vz-heading-color);
+}
+.admin-site-card-input input{
+    width: 100%;
+    border-radius:5px;
+    transition: all .1s;
+    border: 1.3px solid rgb(136, 136, 136);
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    padding: 7px 10px;
+}
+.admin-site-card-input input:focus{
+    outline: none;
+    background-color: #F7FEFF;
+    border-color: #007185;
+    box-shadow: 0 0 0 3px #C8F3FA, 0 1px 2px rgba(15,17,17,.15) inset;
+}
+.card-btn{
+    border: none;
+    padding: 5px 8px;
+    background-color: var(--main-blue-color);
+    color: whitesmoke;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.card-btn:hover{
+    cursor: pointer !important;
+    background-color: rgb(4, 84, 135);
+}
+
+
+/* shipping and Delivery css    */
+.store-shipping-card .card-row {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(235, 233, 233);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+}
+.store-shipping-card .card-row:hover {
+    cursor: pointer;
+    background-color: rgb(246, 245, 245);
+}
+.store-shipping-card .card-row .Rates-tag{
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+}
+.store-shipping-card .card-row .Rates-tag > p{
+    padding-inline-start: 5px;
+}
+.store-shipping-card .card-help-text{
+    padding-bottom: 15px;
+}
+
+
+/* Discount coupons css */
+.store-expected-date-card .card-row{
+    padding-top: 15px;
+}
+.store-coupon-date-card .card-row{
+    display: flex;
+    width: 100%;
+}
+.store-coupon-date-card .card-row > div{
+    width: 50%;
+}
+.store-create-discount-card .title-text{
+    padding-top: 20px;
+}
+.store-create-discount-card .card-row {
+    margin-top: 10px;
+}
+.store-create-discount-card .card-row .admin-site-card-input{
+    display:flex
+}
+
+.store-create-discount-card .card-row .radio-input-wrapper{
+     padding-bottom: 7px;
+}
+.store-discount-value-card .card-row .admin-site-card-input{
+    display: flex;
+}
+.store-discount-value-card .card-row {
+    padding-top: 15px;
+}
+.store-coupon-date-card .card-row{
+    padding-top:15px;
+}
+.store-coupon-date-card .card-row .admin-site-card-input{
+   padding: 0px 10px;
+}
+.discont-coupon-footer{
+    width: 40%;
+    padding: 20px;
+    display: flex !important;
+    justify-content: end;
+}
+
+/* User and permission css */
+.store-owner-card .card-row{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+.store-owner-card .card-row .owner-detail{
+    padding-inline-start: 10px;
+}
+.store-owner-card .card-row .title-text{
+    color: var(--main-blue-color);
+}
+.store-owner-card .card-row .avatar {
+    width: 3rem;
+    height: 3rem;
+}
+.store-owner-card .card-row .avatar img{
+    width: 100%;
+    height: auto;
+    object-fit:contain;
+    border-radius: 100%;
+}
+.store-staf-date-card .card-row{
+    padding-top: 15px;
+}
+.store-staf-date-card .card-row button{
+    margin: 0 !important;
+}
+.store-staf-create-form-card  .card-row{
+    display: flex;
+    justify-content: space-between;
+}
+.store-staf-create-form-card  .card-row > div{
+    width: 49%;
+}
+.store-staf-create-form-card  .card-row > div{
+    margin-top: 15px;
+}
+/* set shipping rates */
+.store-shipping-rate-card  .card-row{
+    margin-top: 15px;
+}
+.store-shipping-rate-card .card-table{
+    padding: 10px;
+}
+
+.store-shipping-rate-card .card-table table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.card-table table th , .card-table table td{
+    text-align: start !important;
+}
+.card-table table th {
+    color: var(--vz-heading-color);
+    border-bottom: 1px solid rgb(231, 230, 230);
+    font-weight: 500;
+    font-size: 14px;
+    padding-bottom: 7px;
+}
+.card-table table td {
+    color: var(--vz-secondary-color);
+    padding: 8px 0px !important;
+    font-size: 14px;
+}
+.rate-card-row-1{
+    display:flex;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(200, 199, 199);
+    align-items: center;
+}
+.rate-card-row-1 > div{
+    padding-inline-start: 10px;
+}
+.rate-card-row-2 .title-text{
+    padding-bottom: 10px;
+}
+/* New customer */
+.store-customer-address-card .card-sub-row{
+    display: flex;
+    justify-content: space-between;
+}
+.store-customer-address-card .admin-site-card-input{
+    margin-top: 10px;
+}
+.store-customer-address-card .card-sub-row > div{
+    width: 49%;
+}
+.store-create-customer-card .admin-site-card-input{
+    margin-top: 10px;
+}
+.store-create-customer-card .card-sub-row{
+    display: flex;
+    justify-content: space-between;
+}
+.store-create-customer-card .card-sub-row > div{
+    width: 49%;
+}

@@ -1,0 +1,221 @@
+.admin-profile-container .background-cover{
+    background-color:  rgb(68 159 243 / 99%);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin-profile-container .background-cover .top-header{
+    display: flex;
+    padding-bottom: 60px;
+    align-items: center;
+}
+.admin-profile-container .background-cover .top-header .detail{
+    padding-inline-start: 20px;
+}
+.admin-profile-container .background-cover .top-header .detail .location{
+    display:flex;
+    align-items: center;
+}
+.admin-profile-container .background-cover .top-header .detail > p{
+    font-weight: 500;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+.admin-profile-container .background-cover .top-header .detail .location p{
+    font-size: 15px;
+    padding-inline-start:2px;
+}
+.admin-profile-container .background-cover .top-header .avatar{
+    width: 6rem;
+    height: 6rem;
+}
+.admin-profile-container .background-cover .top-header .avatar img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.edit-profile-btn{
+    padding-bottom: 60px;
+}
+.edit-profile-btn button{
+    border: none;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    font-family: var(--apple-font);
+    padding: 10px 15px;
+    background-color:var(--vz-success);
+}
+.edit-profile-btn button:hover{
+    cursor: pointer;
+    background-color:var(--vz-success-hover);
+}
+.Edit-personal-info-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.edit-personal-info-btn button{
+    border: none;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    font-family: var(--apple-font);
+    padding: 7px 12px;
+    background-color:var(--vz-success);
+    transition: all 0.3s;
+}
+.edit-personal-info-btn button:hover{
+    cursor: pointer;
+    background-color:var(--vz-success-hover);
+}
+
+.admin-info-cards{
+    /* display: flex; */
+    position: relative;
+    padding: 0px 70px;
+    top: -50px;
+    justify-content: space-between;
+}
+/* .admin-info-cards .admin-short-info{
+    width: 27%;
+    border-radius: 5px;
+    padding: 20px;
+} */
+.admin-info-cards .admin-description{
+    margin: auto;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 40px;
+}
+.info-table .table{
+    font-family: var(--apple-font);
+    width: 100%;
+}
+.admin-short-info > h4{
+    color: var(--vz-heading-color);
+    padding: 10px 20px;
+}
+.info-table .table th{
+    padding: 10px;
+    font-size: 16px;
+    color:var(--vz-heading-color);
+    text-align:start !important;
+}
+.info-table .table td{
+    padding: 16px;
+    font-size: 14px;
+    color: var(--vz-secondary-color);
+}
+
+.admin-description .card-body-for-description > h3{
+   color: var(--vz-heading-color);
+   padding: 10px 0px;
+   font-family: var(--apple-font);
+}
+.admin-description .card-body-for-description > p{
+   color: rgb(37, 37, 37);
+   font-weight: 500;
+   font-size: 15px;
+   line-height:28px;
+   font-family: var(--apple-font);
+}
+.admin-profile-container{
+    background-color: rgb(247, 251, 254);
+    padding: 0px !important;
+}
+.personel-detail{
+    background-color: rgba(247, 251, 254, 0) !important;
+    display: flex;
+    justify-content: space-between;
+}
+.personel-detail > div{
+    width: 49%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* background-color: red; */
+}
+.basic-info-card{
+    margin-top: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+.basic-info-card > h3{
+    padding-bottom: 20px;
+    color: var(--vz-heading-color);
+}
+.basic-info-card .card-info-row{
+    display: flex;
+    padding: 15px 0px;
+    border-top: 1px solid rgb(235, 232, 232);
+}
+.basic-info-card .card-info-row p{
+    color: rgb(37, 37, 37);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 28px;
+    font-family: var(--apple-font);
+}
+
+.basic-info-card .card-info-row > .header-tag{
+    width: 30%;
+}
+
+.basic-info-card .card-info-row >
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+.input-wrapper-admin-personel-info .input-label{
+    font-size: 14.5px;
+    padding: 5px 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: rgb(64, 64, 64);
+}
+.input-wrapper-admin-personel-info input{
+    width: 450px;
+    border-radius: 5px;
+    transition: all .1s;
+    border: 1.3px solid rgb(136, 136, 136);
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    padding: 7px 10px;
+}
+.input-wrapper-admin-personel-info input:focus{
+    outline: none;
+    background-color: #F7FEFF;
+    border-color: #007185;
+    box-shadow: 0 0 0 3px #C8F3FA, 0 1px 2px rgba(15,17,17,.15) inset;
+}
+.personel-detail-edit-action{
+    display: flex;
+    padding: 10px 0px;
+}
+.personel-detail-edit-action button{
+    border: none;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    font-family: var(--apple-font);
+    padding: 7px 12px;
+    background-color:var(--vz-success);
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+.personel-detail-edit-action button:hover{
+    cursor:pointer;
+    background-color:var(--vz-success-hover);
+
+}
+

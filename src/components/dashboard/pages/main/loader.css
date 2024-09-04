@@ -1,0 +1,17 @@
+.loading svg path,
+svg rect{
+  fill: #FF6700;
+}
+.loading p{
+    font-style: italic;
+  }
+  .loader{
+   
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+  }
